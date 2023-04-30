@@ -6,7 +6,7 @@ cd this_is_where_i_have_my_projects_at/
 mkdir what_should_i_name_my_project/
 cd what_should_i_name_my_project/
 git init
-curl -u git_username:git_token and god know what more...
+curl -u git_username:git_token and god knows what more...
 
 You get it right?
 
