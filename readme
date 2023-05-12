@@ -25,3 +25,7 @@ And your done.
 
 ./mpm "your project name"
 -> makes a dir with a local and remote repo
+
+
+12-05-23
+adding the -p flag for creating private repo

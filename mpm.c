@@ -5,12 +5,12 @@
 #include <string.h>
 
 int main(int argc, char *argv[]) {
-     
+
     // Lets get and set our project name as pname
     char *pname = argv[1];
     char root_path[128] = "";
     char final_path[128] = "";
-     
+
     // Lets get our config file as cfg
     FILE *cfg;
     char cfg_buff[128];
@@ -92,10 +92,17 @@ int main(int argc, char *argv[]) {
         system("git init");
         system(curl_cmd);
         system(remote_add);
+        system("touch readme");
+        system("echo \"Repo made using MPM\" > readme");
+        system("git add .");
+        system("git commit -m \"First Base\" ");
+        system("git push -u origin master");
 
     } else {
         // I want to change the current working dir or open up new terminal with the final_path
         wait(NULL);
+        //system("alacritty --working-directory=\"\"");
+
     }
 
     // And like ted mosby, close all your relations... in our case it's the file pointer
