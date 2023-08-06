@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <string.h>
@@ -58,10 +59,11 @@ int main(int argc, char *argv[]) {
         git_token[strcspn(git_token, "\n")] = 0;
 
         // For creating a curl remote repo cmd
-        char curl_cmd[128] = "";
+        char curl_cmd[255] = "";
         char remote_repo1[128] = "curl -u ";
         char remote_repo2[128] = " https://api.github.com/user/repos -d '{\"name\":\"";
         char remote_repo3[128] = "\"}'";
+        char remote_repo4[128] = "\", \"public\":false}'";
         char colon[1] = ":";
         
         strcat(curl_cmd, remote_repo1);
@@ -70,7 +72,13 @@ int main(int argc, char *argv[]) {
         strcat(curl_cmd, git_token);
         strcat(curl_cmd, remote_repo2);
         strcat(curl_cmd, pname);
-        strcat(curl_cmd, remote_repo3);
+        if(argc == 3) {
+            if(strcmp("-p", argv[2]) == 0) {
+                strcat(curl_cmd, remote_repo4);
+            }
+        } else {
+            strcat(curl_cmd, remote_repo3);
+        }
 
         printf("%s\n", curl_cmd);
 
