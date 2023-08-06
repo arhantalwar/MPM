@@ -1,7 +1,5 @@
 # MPM
 
-![thumbnail](./thumbnail.png)
-
 ## Quick Start
 
 Edit the mpm.conf
